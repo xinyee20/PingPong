@@ -34,9 +34,12 @@
      canvas.addEventListener('mousedown', handleMouseClick);
      canvas.addEventListener('mousemove', 
      function(event) {
-       var mousePos = calculateMousePos(event);
-       // mouse height controls aligns to center of paddle
-       paddle1Y = mousePos.y - (PADDLE_HEIGHT/2);
+      var mousePos = calculateMousePos(event);
+      // mouse height controls aligns to center of paddle
+      var paddleCenterLimit = mousePos.y - (PADDLE_HEIGHT/2);
+      if (paddleCenterLimit > (PADDLE_HEIGHT/2) || paddleCenterLimit < (canvas.height - (PADDLE_HEIGHT/2))) {
+        paddle1Y = mousePos.y - (PADDLE_HEIGHT/2);
+      }
      })
   }
 
@@ -199,6 +202,7 @@
       background-color: black;
       display:flex;
       justify-content: center;
+      cursor: none;
     }
   </style>
 </html>
