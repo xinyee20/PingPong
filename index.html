@@ -19,7 +19,7 @@
     var paddle2Y = 250;
     const PADDLE_THICKNESS = 12;
     const PADDLE_HEIGHT = 80;
-    const PADDLE_COLOR = '#9c251f';
+    const PADDLE_COLOR = '#ff7c0a';
     const NET_COLOR = 'white';
     const BOUNDARY_COLOR = '#d7fcfc';
     const TEXT_COLOR = 'white';
@@ -28,7 +28,7 @@
      canvas = document.getElementById('gameCanvas');
      canvasContext = canvas.getContext('2d');
 
-     var framesPerSecond = 80;
+     var framesPerSecond = 60;
      setInterval(setUpGame, 1000/framesPerSecond);
 
      canvas.addEventListener('mousedown', handleMouseClick);
@@ -161,7 +161,7 @@
       canvasContext.font = "50px Arial";
       canvasContext.fillText("PING PONG", 220, 180);
       canvasContext.font = "20px Arial";
-      canvasContext.fillText("Click to play", 300, 230);
+      canvasContext.fillText("Start Game", 300, 230);
       return;
     }
     // tennis ball
@@ -175,7 +175,7 @@
         canvasContext.fillText("Computer Won!", 220, 130);
       }
       canvasContext.font = "25px Arial";
-      canvasContext.fillText("Click to replay", 260, 280);
+      canvasContext.fillText("Click to replay", 270, 280);
       return;
     }
     drawBoundaries();
@@ -184,11 +184,12 @@
     colorObjects(0, paddle1Y, PADDLE_THICKNESS, PADDLE_HEIGHT, PADDLE_COLOR);
     // right player paddle
     colorObjects(canvas.width - PADDLE_THICKNESS, paddle2Y, PADDLE_THICKNESS, PADDLE_HEIGHT, PADDLE_COLOR);
-
     // score board
     canvasContext.fillStyle = TEXT_COLOR;
     canvasContext.font = "20px Arial";
+    canvasContext.fillText('Player', 150, 70);
     canvasContext.fillText(player1Score, 170, 100);
+    canvasContext.fillText('Computer', canvas.width-220, 70);
     canvasContext.fillText(player2Score, canvas.width-180, 100);
   }
 
