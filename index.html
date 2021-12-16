@@ -20,7 +20,8 @@
     const PADDLE_THICKNESS = 12;
     const PADDLE_HEIGHT = 80;
     const PADDLE_COLOR = '#ff7c0a';
-    const NET_COLOR = 'white';
+    const NET_COLOR = '#222433';
+    const AREA_COLOR = '#556659';
     const BOUNDARY_COLOR = '#d7fcfc';
     const TEXT_COLOR = 'white';
 
@@ -37,7 +38,7 @@
       var mousePos = calculateMousePos(event);
       // mouse height controls aligns to center of paddle
       var paddleCenterLimit = mousePos.y - (PADDLE_HEIGHT/2);
-      if (paddleCenterLimit > (PADDLE_HEIGHT/2) || paddleCenterLimit < (canvas.height - (PADDLE_HEIGHT/2))) {
+      if (paddleCenterLimit > -(PADDLE_HEIGHT/2) && paddleCenterLimit < (canvas.height - (PADDLE_HEIGHT/2))) {
         paddle1Y = mousePos.y - (PADDLE_HEIGHT/2);
       }
      })
@@ -157,8 +158,8 @@
   }
 
   function drawGame() { // order of drawing matters
-    // tennis table
-    colorObjects(0, 0, canvas.width, canvas.height, '#3f6936');
+    // playing area
+    colorObjects(0, 0, canvas.width, canvas.height, AREA_COLOR);
     if (showStartScreen) {
       canvasContext.fillStyle = TEXT_COLOR;
       canvasContext.font = "50px Arial";
@@ -167,7 +168,7 @@
       canvasContext.fillText("Start Game", 300, 230);
       return;
     }
-    // tennis ball
+    // ball
     drawBall(ballX, ballY, 10, '#fff0cf');
     if (showWinScreen) {
       canvasContext.fillStyle = TEXT_COLOR;
